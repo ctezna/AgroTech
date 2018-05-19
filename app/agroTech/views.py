@@ -19,10 +19,14 @@ def index():
     #     return render_template('index.html',plantId=plantId)
 
 	humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.AM2302, 17)
-	if humidity is None and temperature is None:
-		return render_template("index.html",temp=-1,hum=-1)
-	else:
-		return render_template("index.html",temp=temperature,faren=temperature*9/5.0+32,hum=humidity)
+    if temperature is None:
+        temperature = 0
+        
+	faren = temperature * 9/5.0 + 32
+ 	if humidity is None and temperature is None:
+ 		return render_template("index.html",temp=-1,hum=-1)
+ 	else:
+		return render_template("index.html",temp=temperature,faren=faren,hum=humidity)
     #return render_template('index.html')
 
 @app.route('/settings.html')
