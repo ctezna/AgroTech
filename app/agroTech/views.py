@@ -20,9 +20,9 @@ def index():
 
 	humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.AM2302, 17)
 	faren = temperature * 9/5.0 + 32
- 	if humidity is None and temperature is None:
- 		return render_template("index.html",temp=-1,hum=-1)
- 	else:
+	if humidity is None and temperature is None:
+		return render_template("index.html",temp=-1,hum=-1)
+	else:
 		return render_template("index.html",temp=temperature,faren=faren,hum=humidity)
     #return render_template('index.html')
 
