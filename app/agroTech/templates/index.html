@@ -119,6 +119,9 @@
             }
             time1 = hour + ":" + min + '<small style="color: #333333;">am</small>';
           }else{
+            if(hour == 12){
+              hour = 24;
+            }
             time1 = (hour - 12) + ":" + min + '<small style="color: #333333;">pm</small>';
           }
           var dateNum = day + "/" + month + "/" + year;
