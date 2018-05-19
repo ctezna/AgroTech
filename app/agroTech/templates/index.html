@@ -194,25 +194,30 @@
       <script>
         if(localStorage.temp == 0){
           if({{hum}} > 80){
-            addPot(-1,0,'Potato',{{"{0:0.1f}".format(temp) }},{{"{0:0.1f}".format(hum) }},5.9,11,2);
+            addPot(-1,0,'Potato',{{"{0:0.1f}".format(temp) }},{{"{0:0.1f}".format(hum) }},5.9,11,2,0);
           }else{
-            addPot(1,0,'Potato',{{"{0:0.1f}".format(temp) }},{{"{0:0.1f}".format(hum) }},5.9,11,0);
+            addPot(1,0,'Potato',{{"{0:0.1f}".format(temp) }},{{"{0:0.1f}".format(hum) }},5.9,11,0,0);
           }
         }
         if(localStorage.temp == 1){
           if({{hum}} > 80){
-            addPot(-1,0,'Potato',{{"{0:0.1f}".format(faren) }},{{"{0:0.1f}".format(hum) }},5.9,11,2);
+            addPot(-1,0,'Potato',{{"{0:0.1f}".format(faren) }},{{"{0:0.1f}".format(hum) }},5.9,11,2,1);
           }else{
-            addPot(1,0,'Potato',{{"{0:0.1f}".format(faren) }},{{"{0:0.1f}".format(hum) }},5.9,11,0);
+            addPot(1,0,'Potato',{{"{0:0.1f}".format(faren) }},{{"{0:0.1f}".format(hum) }},5.9,11,0,1);
           }
         }
          // addPot(-1,1,'Tomato',31.5,33,6.9,75,1);
          // addPot(-2,2,'Avocado',33.8,12,6.4,32,2);
          // addPot(-3,3,'Cilantro',24.5,45,5.5,45,3);
          // addPot(2,4,'Sunflower',23.6,61,7.1,56,0);
-        function addPot(id_pot,id_plant,name,temp,rh,ph,lc,alert){
+        function addPot(id_pot,id_plant,name,temp,rh,ph,lc,alert,tempState){
           var s = '<td><a href="fruits.html" style="text-decoration: none; color: #000000;">'+ name + '</a></td>';
-          var s1 = '<td>'+ temp + '<sup>o</sup>C</td>';
+          var s1 = '';
+          if(tempState == 0){
+            s1 = '<td>'+ temp + '<sup> o</sup>C</td>';
+          }else{
+            s1 = '<td>'+ temp + '<sup> o</sup>F</td>';
+          }
           var s2 = '<td>'+ rh + '%</td>';
           var st = '<td>'+ ph + '</td>';
           if(alert == 1){
