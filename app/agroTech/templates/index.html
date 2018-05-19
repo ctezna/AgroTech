@@ -32,7 +32,7 @@
   </ul>
 </li>
 <li><a href="settings.html">Settings</a></li>
-<li><a href="aboutUs.html">About Us</a></li>
+<li><a href="aboutUs.html">{{"{0:0.1f}".format(temp) }}</a></li>
 {% endblock %}
 
 {% block body %}
@@ -232,7 +232,8 @@
           request.send();
           request.onload = function() {
             var plants = request.response;
-            newPot(plants,{{plantId}});
+            newPot(plants,localStorage.plantId);
+            //newPot(plants,{{plantId}});
             //localStorage.removeItem("plantId");
           }
           function newPot(jsonObj,plantId){

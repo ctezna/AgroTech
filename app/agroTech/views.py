@@ -1,4 +1,5 @@
 from agroTech import app
+import Adafruit_DHT
 from flask import render_template, request
 from agroTech.static.data.db import get_db, init_db
 
@@ -7,16 +8,23 @@ app.debug = True
 @app.route('/')
 @app.route('/index.html',methods=('GET','POST'))
 def index():
-    if request.method == 'POST':
-        plantId = request.form['plantId']
-        db = init_db()
-        db.execute(
-                'INSERT INTO pots (plantId) VALUES (?)',
-                (plantId)
-            )
-        db.commit()
-        return render_template('index.html',plantId=plantId)
-    return render_template('index.html')
+    # if request.method == 'POST':
+    #     plantId = request.form['plantId']
+    #     db = init_db()
+    #     db.execute(
+    #             'INSERT INTO pots (plantId) VALUES (?)',
+    #             (plantId)
+    #         )
+    #     db.commit()
+    #     return render_template('index.html',plantId=plantId)
+
+	humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.AM2302, 17)
+	#temperature = temperature * 9/5.0 + 32
+	if humidity is None and temperature is None:
+		return render_template("index.html",temp='N/A',hum='N/A')
+	else:
+		return render_template("index.html",temp=temperature,hum=humidity)
+    #return render_template('index.html')
 
 @app.route('/settings.html')
 def settings():
