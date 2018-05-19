@@ -6,6 +6,8 @@ git clone https://github.com/ctezna/AgroTech.git
 #
 cd AgroTech/
 #
+cd app/
+#
 sudo pip3 install -r requirements.txt
 #
 gunicorn -b 'RPI IP Address':'PORT' agroTech:app
