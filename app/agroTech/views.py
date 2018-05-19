@@ -22,7 +22,7 @@ def index():
 	if humidity is None and temperature is None:
 		return render_template("index.html",temp=-1,hum=-1)
 	else:
-		return render_template("index.html",temp=temperature,faren=100,hum=humidity)
+		return render_template("index.html",temp=temperature,faren=temperature*9/5.0+32,hum=humidity)
     #return render_template('index.html')
 
 @app.route('/settings.html')
