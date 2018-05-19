@@ -1,0 +1,25 @@
+DROP TABLE IF EXISTS pots;
+DROP TABLE IF EXISTS settings;
+
+CREATE TABLE pots (
+  potId INTEGER PRIMARY KEY AUTOINCREMENT,
+  plantID INTEGER NOT NULL,
+  name TEXT NOT NULL,
+  scName TEXT,
+  tempL REAL,
+  tempH REAL,
+  humL REAL,
+  phL REAL,
+  phH REAL,
+  wc INTEGER,
+  lc INTEGER
+);
+
+CREATE TABLE settings (
+  settingsId INTEGER PRIMARY KEY AUTOINCREMENT,
+  timeSet INTEGER DEFAULT 0,
+  dateSet INTEGER DEFAULT 0,
+  temp INTEGER DEFAULT 0,
+  notif INTEGER DEFAULT 0,
+  email TEXT
+);

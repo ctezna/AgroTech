@@ -1,0 +1,133 @@
+{% extends 'layout.html' %}
+
+{% block style%}
+<style>
+      .navbar{
+        margin-bottom:0;
+        border-radius:0;
+      }
+</style>
+{% endblock %}
+
+{% block nav %}
+<li><a href="index.html">Home </a></li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">New Pot <span class="caret"></span></a>
+<ul class="dropdown-menu">
+  <li><a href="vegetables.html">Vegetables</a></li>
+  <li role="separator" class="divider"></li>
+  <li><a href="fruits.html">Fruits</a></li>
+  <li role="separator" class="divider"></li>
+  <li><a href="other.html">Other</a></li>
+</ul>
+</li>
+<li class="active"><a href="settings.html">Settings <span class="sr-only">(current)</span></a></li>
+<li><a href="aboutUs.html">About Us</a></li>
+{% endblock %}
+
+{% block body %}
+<div class="page-header">
+    <h1 class="text-center text-uppercase">Settings</h1>
+</div>
+
+<div class="container">
+  <form onsubmit="return saveSettings(this);" method="POST">
+    <fieldset>
+      <legend>Configurations:</legend>
+      &emsp;&emsp;<label><b>Time: </b></label><br><div id='time'></div>
+      &emsp;&emsp;<label><b>Date: </b></label><br><div id='date'></div>
+      &emsp;&emsp;<label><b>Temperature: </b></label><br><div id='temp'></div>
+      &emsp;&emsp;<label><b>Notifications: </b></label><br><div id='notif'></div>
+      &emsp;&emsp;<label><b>Email: </b></label><br><div id='email'></div>
+      &emsp;&emsp;<br><input type="submit" value="Save">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div id="save" class="col-md-4"></div>
+        <div class="col-md-4"></div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+<script>
+  if(localStorage.time == null || localStorage.time == 0){
+  var st = '&emsp;&emsp;&emsp;<input type="radio" name="time" value="0" checked> 12 Hr';
+  var s = '&ensp;<input type="radio" name="time" value="1"> 24 Hr<br>';
+  var html = st + s;
+    document.getElementById("time").innerHTML = html;
+  }
+  if(localStorage.time == 1){
+    var st = '&emsp;&emsp;&emsp;<input type="radio" name="time" value="0"> 12 Hr';
+    var s = '&ensp;<input type="radio" name="time" value="1" checked> 24 Hr<br>';
+    var html = st + s;
+    document.getElementById("time").innerHTML = html;
+  }
+  if(localStorage.date == null || localStorage.date == 0){
+    var st = '&emsp;&emsp;&emsp;';
+    var st1 = '<input type="radio" name="date" value="0" checked> Month DD, YYYY';
+    var st2 = '&ensp;<input type="radio" name="date" value="1"> DD/MM/YYYY';
+    var s = '&ensp;<input type="radio" name="date" value="2"> MM/DD/YYYY<br>';
+    var html = st + st1 + st2 + s;
+    document.getElementById("date").innerHTML = html;
+  }
+  if(localStorage.date == 1){
+    var st = '&emsp;&emsp;&emsp;';
+    var st1 = '<input type="radio" name="date" value="0"> Month DD, YYYY';
+    var st2 = '&ensp;<input type="radio" name="date" value="1" checked> DD/MM/YYYY';
+    var s = '&ensp;<input type="radio" name="date" value="2"> MM/DD/YYYY<br>';
+    var html = st + st1 + st2 + s;
+    document.getElementById("date").innerHTML = html;
+  }
+  if(localStorage.date == 2){
+    var st = '&emsp;&emsp;&emsp;';
+    var st1 = '<input type="radio" name="date" value="0"> Month DD, YYYY';
+    var st2 = '&ensp;<input type="radio" name="date" value="1"> DD/MM/YYYY';
+    var s = '&ensp;<input type="radio" name="date" value="2" checked> MM/DD/YYYY<br>';
+    var html = st + st1 + st2 + s;
+    document.getElementById("date").innerHTML = html;
+  }
+  if(localStorage.temp == null || localStorage.temp == 0){
+    var st = '&emsp;&emsp;&emsp;<input type="radio" name="temp" value="0" checked> <sup>o</sup>C';
+    var s = '&ensp;<input type="radio" name="temp" value="1"> <sup>o</sup>F<br>';
+    var html = st + s;
+    document.getElementById("temp").innerHTML = html;
+  }
+  if(localStorage.temp == 1){
+    var st = '&emsp;&emsp;&emsp;<input type="radio" name="temp" value="0"> <sup>o</sup>C';
+    var s = '&ensp;<input type="radio" name="temp" value="1" checked> <sup>o</sup>F<br>';
+    var html = st + s;
+    document.getElementById("temp").innerHTML = html;
+  }
+  var usermail = '';
+  if(localStorage.notif == null || localStorage.notif == 0){
+    var st = '&emsp;&emsp;&emsp;<input type="radio" name="notif" value="0" checked> OFF';
+    var s = '&ensp;<input type="radio" name="notif" value="1"> ON<br>';
+    var html = st + s;
+    document.getElementById("notif").innerHTML = html;
+    document.getElementById("email").innerHTML = '&emsp;&emsp;&emsp;<input type="text" name="email" placeholder="Not Required"><br>';
+  }
+  if(localStorage.notif == 1){
+    usermail = localStorage.email;
+    var st = '&emsp;&emsp;&emsp;<input type="radio" name="notif" value="0"> OFF';
+    var s = '&ensp;<input type="radio" name="notif" value="1" checked> ON<br>';
+    var html = st + s;
+    document.getElementById("notif").innerHTML = html;
+    document.getElementById("email").innerHTML = '&emsp;&emsp;&emsp;<input type="email" name="email" placeholder=' + '"' + usermail + '"' + '><br>';
+  }
+</script>
+<script>
+  function saveSettings(form){
+  var date = form.date.value;
+  var time = form.time.value;
+  var temp = form.temp.value;
+  var notif = form.notif.value;
+  var email = form.email.value;
+  localStorage.date = date;
+  localStorage.time = time;
+  localStorage.temp = temp;
+  localStorage.notif = notif;
+  localStorage.email = email;
+  document.getElementById("save").innerHTML = '<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Settings Saved.</strong></div>';
+  return false;
+  }
+</script>
+{% endblock %}
