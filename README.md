@@ -12,3 +12,10 @@ python3
 `gunicorn -b 'RPI IP Address':'PORT' agroTech:app`<br>
 # Ex.
 `gunicorn -b 192.168.1.67:8000 agroTech:app`
+# Usage
+Monitor the temperature, relative humidity, and pH levels of<br>
+a plant located within one of the <em><b>Agro</b>Tech <b>Smart</b>Pots</em>.<br><br>
+Once installed use a web browser connected to the LAN and direct<br>
+to the url : `'RPI IP Address':'PORT'`<br><br>
+Software allows for up to 6 different plants per server (RPi).<br>
+Navigate to <strong><em>+New Pot</em></strong> on the Navbar to begin.
