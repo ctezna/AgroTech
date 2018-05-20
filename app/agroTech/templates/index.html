@@ -378,17 +378,24 @@
               alertP = 1;
             }
             if(potId < 0 && localStorage.notif == 1){
-              var lastNotify = -1;
-              if(localStorage.notified == null){
+              var lastNotifyT = -1;
+              var lastNotifyD = -1;
+              if(localStorage.notifiedH == null){
                 var d = new Date();
-                localStorage.notified = d.getHours();
+                localStorage.notifiedH = d.getHours();
+                localStorage.notifiedD = d.getDate();
                 post('/index.html',{email: localStorage.email},'post');
               }else{
-                lastNotify = localStorage.notified;
+                lastNotifyT = localStorage.notifiedH;
+                lastNotifyD = localStorage.notifiedD;
               }
               var dt = new Date();
               currentTime = dt.getHours();
-              if((currentTime - lastNotify) >= 2){
+              currentDate = dt.getDate();
+              if(((currentTime - lastNotifyT) >= 1) || (currentDate - lastNotifyD) >= 1){
+                var d = new Date();
+                localStorage.notifiedH = d.getHours();
+                localStorage.notifiedD = d.getDate();
                 post('/index.html',{email: localStorage.email},'post');
               }
             }

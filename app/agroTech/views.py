@@ -75,5 +75,9 @@ def sendemail(to_email,sub,message):
 	server.starttls()
 	server.login(fromaddr, "smartpot06")
 	text = msg.as_string()
-	server.sendmail(fromaddr, toaddr, text)
+	try:
+	    server.sendmail(fromaddr, toaddr, text)
+	except SMTPRecipientsRefused as err:
+		print ("Error: Recipient(s) Refuesed")
+		raise
 	server.quit()
