@@ -13,14 +13,17 @@ def index():
 	humidity = random.uniform(1,1001)
 	temperature = random.uniform(-20,100)
 	ph = random.uniform(6,7)
-	if humidity is None and temperature is None:
-		return render_template("index.html",temp=-1,hum=-1,ph=ph)
-		if ph is None:
-		    return render_template("index.html",temp=-1,hum=-1,ph=-1)
-	else:
-		if ph is None:
-			return render_template("index.html", temp=temperature, hum=humidity,ph=-1)
-		return render_template("index.html", temp=temperature, hum=humidity,ph=ph)
+	#humidity = None
+	#temperature = None
+	#ph = None
+	if humidity is None:
+		humidity = -1
+	if temperature is None:
+		temperature = -404
+	if ph is None:
+		ph = -1
+
+	return render_template("index.html", temp=temperature, hum=humidity, ph=ph)
 
 @app.route('/settings.html')
 def settings():

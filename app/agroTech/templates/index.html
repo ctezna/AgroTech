@@ -261,6 +261,15 @@
           if(alertP == 1){
             st = '<td><strong>'+ ph + '</strong></td>';
           }
+          if(temp == -404){
+            s1 = '<td><strong> Sensor 404 </strong></td>';
+          }
+          if(rh == -1){
+            s2 = '<td><strong> Sensor 404 </strong></td>';
+          }
+          if(ph == -1){
+            st = '<td><strong> Sensor 404 </strong></td>';
+          }
           var st1 = '';
           var st2 = '';
           if(lc < 34){
@@ -345,7 +354,7 @@
                 }
               }
             }
-            if(temp <= 10 || temp >= 50){temp = (tempH+tempL)/2;}
+            if((temp <= 10 || temp >= 50) && temp != -404){temp = (tempH+tempL)/2;}
             if(temp >= tempH || temp <= tempL){
               if(potId > 0){
                 potId = potId * -1;
