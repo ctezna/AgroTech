@@ -14,9 +14,9 @@
 {% endblock %}
 
 {% block nav %}
-<li><a href="index.html">Home </a></li>
+<li><a href="index.html"><span class="glyphicon glyphicon-home"></span> Home </a></li>
 <li class="dropdown">
-<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">New Pot <span class="caret"></span></a>
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus"></span> New Pot <span class="caret"></span></a>
 <ul class="dropdown-menu">
   <li><a href="vegetables.html">Vegetables</a></li>
   <li role="separator" class="divider"></li>
@@ -25,8 +25,8 @@
   <li><a href="other.html">Other</a></li>
 </ul>
 </li>
-<li class="active"><a href="settings.html">Settings <span class="sr-only">(current)</span></a></li>
-<li><a href="aboutUs.html">About Us</a></li>
+<li class="active"><a href="settings.html"><span class="glyphicon glyphicon-cog"></span> Settings <span class="sr-only">(current)</span></a></li>
+<li><a href="aboutUs.html"><span class="glyphicon glyphicon-info-sign"></span> About Us</a></li>
 {% endblock %}
 
 {% block body %}
@@ -43,7 +43,7 @@
       &emsp;&emsp;<label><b>Temperature: </b></label><br><div id='temp'></div>
       &emsp;&emsp;<label><b>Notifications: </b></label><br><div id='notif'></div>
       &emsp;&emsp;<label><b>Email: </b></label><br><div id='email'></div>
-      &emsp;&emsp;<br><input type="submit" value="Save">
+      &emsp;&emsp;<br><input class="btn btn-success" type="submit" value="Save">
       <div class="row">
         <div class="col-md-4"></div>
         <div id="save" class="col-md-4"></div>

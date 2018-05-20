@@ -24,9 +24,9 @@
 {% endblock %}
 
 {% block nav %}
-<li class="active"><a href="index.html">Home <span class="sr-only">(current)</span></a></li>
+<li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span> Home <span class="sr-only">(current)</span></a></li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">New Pot <span class="caret"></span></a>
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus"></span> New Pot <span class="caret"></span></a>
   <ul class="dropdown-menu">
     <li><a href="vegetables.html">Vegetables</a></li>
     <li role="separator" class="divider"></li>
@@ -35,15 +35,16 @@
     <li><a href="other.html">Other</a></li>
   </ul>
 </li>
-<li><a href="settings.html">Settings</a></li>
-<li><a href="aboutUs.html">About Us</a></li>
+<li><a href="settings.html"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+<li><a href="aboutUs.html"><span class="glyphicon glyphicon-info-sign"></span> About Us</a></li>
 {% endblock %}
 
 {% block body %}
 <!-- JUMBOTRON -->
+  <div class="container">
+    <h1 class="text-center" id="date"></h1>
     <div class="jumbotron text-center">
       <div class="container">
-        <h1 id="date"></h1>
         <div class="container">
           <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
@@ -89,6 +90,7 @@
             </a>
           </div>
         </div>
+      </div>
         <script>
           var d = new Date();
           var month = d.getMonth() + 1;
@@ -187,18 +189,53 @@
             <tr id="pot6" class="success"></tr>
           </div>
         </table>
-        <button type="button" id="newPot" class="btn btn-primary" onclick="location.href='vegetables.html';">
+        <button type="button" id="newPot" class="btn btn-primary" onclick="location.href='newPot.html';">
           New Pot
+        </button>
+        <button type="button" id="clearPots" class="btn btn-danger pull-right" onclick="clearPots();location.href='index.html';">
+          Clear Pots
         </button>
       </div>
       <script>
-        var plantId = -1;
-        if(localStorage.plantId == null){
-          plantId = 1001;
-        }else{
-          plantId = localStorage.plantId;
+        function clearPots(){
+          localStorage.removeItem("plantId0");
+          localStorage.removeItem("plantId1");
+          localStorage.removeItem("plantId2");
+          localStorage.removeItem("plantId3");
+          localStorage.removeItem("plantId4");
+          localStorage.removeItem("plantId5");
         }
-        updatePot(plantId,{{"{0:0.1f}".format(temp) }},{{"{0:0.1f}".format(hum) }},{{"{0:0.1f}".format(ph)}},localStorage.temp);
+        var plantId = -1;
+        var pots = [];
+        if(localStorage.plantId0!=null){
+          plantId = localStorage.plantId0;
+          pots.push(plantId);
+        }
+        if(localStorage.plantId1!=null){
+          plantId = localStorage.plantId1;
+          pots.push(plantId);
+        }
+        if(localStorage.plantId2!=null){
+          plantId = localStorage.plantId2;
+          pots.push(plantId);
+        }
+        if(localStorage.plantId3!=null){
+          plantId = localStorage.plantId3;
+          pots.push(plantId);
+        }
+        if(localStorage.plantId4!=null){
+          plantId = localStorage.plantId4;
+          pots.push(plantId);
+        }
+        if(localStorage.plantId5!=null){
+          plantId = localStorage.plantId5;
+          pots.push(plantId);
+        }
+        pLen = pots.length;
+        for(var i = 0; i < pLen; i++){
+          var plant = pots[i];
+          updatePot(plant,i+1,{{"{0:0.1f}".format(temp) }},{{"{0:0.1f}".format(hum) }},{{"{0:0.1f}".format(ph)}},localStorage.temp);
+        }
         function addPot(id_pot,name,temp,rh,ph,lc,alertT,alertH,alertP,tempState){
           var s = '<td><a href="fruits.html" style="text-decoration: none; color: #000000;">'+ name + '</a></td>';
           var s1 = '';
@@ -243,7 +280,7 @@
           var pot = 'pot' + id_pot;
           document.getElementById(pot).innerHTML = html;
         }
-        function updatePot(plantId, temp, hum, ph, tempState){
+        function updatePot(plantId, pId, temp, hum, ph, tempState){
           var requestURL = 'static/data/plants.json';
           var request = new XMLHttpRequest();
           request.open('GET', requestURL);
@@ -258,7 +295,7 @@
             var phL = 100;
             var phH = 100;
             var lc = -1;
-            var potId = 1;
+            var potId = pId;
             var alertT = 0;
             var alertH = 0;
             var alertP = 0;
@@ -308,12 +345,14 @@
                 }
               }
             }
+            if(temp <= 10 || temp >= 50){temp = (tempH+tempL)/2;}
             if(temp >= tempH || temp <= tempL){
               if(potId > 0){
                 potId = potId * -1;
               }
               alertT = 1;
             }
+            if(hum > 100){hum = (humH+humL)/2;}
             if(hum >= humH || hum <= humL){
               if(potId > 0){
                 potId = potId * -1;

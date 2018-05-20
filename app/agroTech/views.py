@@ -10,9 +10,9 @@ app.debug = True
 @app.route('/index.html',methods=('GET','POST'))
 def index():
 	#humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.AM2302, 17)
-	humidity = random.uniform(1,101)
-	temperature = random.uniform(20,39)
-	ph = random.uniform(5,8)
+	humidity = random.uniform(1,1001)
+	temperature = random.uniform(-20,100)
+	ph = random.uniform(6,7)
 	if humidity is None and temperature is None:
 		return render_template("index.html",temp=-1,hum=-1,ph=ph)
 		if ph is None:
@@ -41,6 +41,10 @@ def other():
 @app.route('/aboutUs.html')
 def aboutUs():
     return render_template('aboutUs.html')
+
+@app.route('/newPot.html')
+def newPot():
+	return render_template('newPot.html')
 
 @app.errorhandler(404)
 def page_not_found(error):
