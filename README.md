@@ -1,7 +1,7 @@
 # AgroTech
 Automatic agricultural monitoring.
 # Basic Requirements
-Raspberry Pi3 (required wifi)
+Raspberry Pi3 (required wifi)(only tested on Raspian OS)
 <br>
 python3
 # Installation
