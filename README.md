@@ -4,6 +4,8 @@ Automatic agricultural monitoring.
 Raspberry Pi3 (required wifi)(only tested on Raspian OS)
 <br>
 python3
+<br>
+microcontroller for sensors with serial communication
 # Installation
 `git clone https://github.com/ctezna/AgroTech.git`<br>
 `cd AgroTech/`<br>
