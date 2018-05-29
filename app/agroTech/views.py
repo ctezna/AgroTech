@@ -1,7 +1,7 @@
 from agroTech import app
-#import Adafruit_DHT
 import random
 import smtplib
+from agroTech.sensorRead import getReadings
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from flask import render_template, request
@@ -18,13 +18,17 @@ def index():
 		msg = 'Please check the status of your SmartPots, we have received an alert that one of your plants requires attention.'
 		sendemail(email,subject,msg)
 
-	#humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.AM2302, 17)
-	humidity = random.uniform(1,1001)
-	temperature = random.uniform(-20,100)
-	ph = random.uniform(6,7)
-	#humidity = None
-	#temperature = None
-	#ph = None
+	# humidity = random.uniform(1,1001)
+	# temperature = random.uniform(-20,100)
+	# ph = random.uniform(6,7)
+	readings = getReadings()
+	if readings == 'ERROR: SERIAL CONNECTION':
+		readings = getReadings()
+		if readings == 'ERROR: SERIAL CONNECTION':
+			return render_template("index.html", temp=-404, hum=-1, ph=-1)
+	temperature = float(readings[0])
+	humidity = float(readings[1])
+	ph = float(readings[2])
 	if humidity is None:
 		humidity = -1
 	if temperature is None:
