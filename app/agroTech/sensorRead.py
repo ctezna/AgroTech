@@ -10,7 +10,7 @@ def getReadings(serialPort):
             return('ERROR: SERIAL CONNECTION')
 
     readings = ser.readline()
-    while len(readings) < 10:
+    while len(readings) < 18:
         readings = ser.readline()
     temp = -404
     hum = -1

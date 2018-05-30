@@ -8,6 +8,7 @@ from flask import render_template, request
 from agroTech.static.data.db import get_db, init_db
 
 app.debug = True
+randTest = False
 
 @app.route('/')
 @app.route('/index.html',methods=('GET','POST'))
@@ -18,15 +19,13 @@ def index():
 		msg = 'Please check the status of your SmartPots, we have received an alert that one of your plants requires attention.'
 		sendemail(email,subject,msg)
 
-	# humidity = random.uniform(1,1001)
-	# temperature = random.uniform(-20,100)
-	# ph = random.uniform(6,7)
+
 	readings = getReadings('/dev/cu.usbmodem411')
 	if readings == 'ERROR: SERIAL CONNECTION':
 		readings = getReadings('/dev/cu.usbmodem411')
 		if readings == 'ERROR: SERIAL CONNECTION':
-			return render_template("index.html", temp=-404, hum=-1, ph=-1)
-			
+			readings = [-404, -1, -1]
+
 	temperature = float(readings[0])
 	humidity = float(readings[1])
 	ph = float(readings[2])
@@ -37,6 +36,10 @@ def index():
 	if ph is None:
 		ph = -1
 
+	if randTest == True:
+		humidity = random.uniform(1,100)
+		temperature = random.uniform(10,40)
+		ph = random.uniform(6,7)
 	return render_template("index.html", temp=temperature, hum=humidity, ph=ph)
 
 @app.route('/settings.html')

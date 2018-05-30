@@ -302,10 +302,14 @@
             st2 = st1 + lc + ' Days</div></div></td><td>'+ date +'</td>';
           }
           if(lc < 75 && lc > 45){
-            st1 = '<td><div class="progress"><div class="progress-bar progress-bar-sucess progress-bar-striped active" style="width:'+lc+'%;">';
+            st1 = '<td><div class="progress"><div class="progress-bar progress-bar-success progress-bar-striped active" style="width:'+lc+'%;">';
             st2 = st1 + lc + ' Days</div></div></td><td>'+ date +'</td>';
           }
-          if(lc >= 75){
+          if(lc >= 75 && lc < 100){
+            st1 = '<td><div class="progress"><div class="progress-bar progress-bar-striped active" style="width:'+lc+'%;">';
+            st2 = st1 + lc + ' Days</div></div></td><td>'+ date +'</td>';
+          }
+          if(lc >= 100){
             st1 = '<td><div class="progress"><div class="progress-bar progress-bar-warning progress-bar-striped active" style="width:'+lc+'%;">';
             st2 = st1 + lc + ' Days</div></div></td><td>'+ date +'</td>';
           }
