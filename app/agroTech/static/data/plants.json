@@ -9,6 +9,7 @@
       "phL" : 6.1,
       "phH" : 7.2,
       "waterCycle" : 12,
+      "img" : "http://planttuff.com/wp-content/uploads/2016/11/tomato-plants-with-large-red-tomatoes2.jpg",
       "lifeCycle" : 76
     },
     { "id" : "1",
@@ -20,7 +21,8 @@
       "phL" : 6.6,
       "phH" : 7.7,
       "waterCycle" : 6,
-      "lifeCycle" : 45
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
+      "lifeCycle" : 123
     },
     { "id" : "2",
       "name" : "Asparagus",
@@ -31,6 +33,7 @@
       "phL" : 5.7,
       "phH" : 6.4,
       "waterCycle" : 16,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 61
     },
     { "id" : "3",
@@ -42,6 +45,7 @@
       "phL" : 5.7,
       "phH" : 6.4,
       "waterCycle" : 16,
+      "img" : "https://hdwallsource.com/img/2018/8/carrot-basket-wallpaper-background-hd-62715-64698-hd-wallpapers.jpg",
       "lifeCycle" : 61
     },
     { "id" : "4",
@@ -53,6 +57,7 @@
       "phL" : 5.7,
       "phH" : 6.4,
       "waterCycle" : 16,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 61
     },
     { "id" : "5",
@@ -64,6 +69,7 @@
       "phL" : 5.7,
       "phH" : 6.4,
       "waterCycle" : 16,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 61
     },
     { "id" : "6",
@@ -75,6 +81,7 @@
       "phL" : 5.7,
       "phH" : 6.4,
       "waterCycle" : 16,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 61
     },
     { "id" : "7",
@@ -86,6 +93,7 @@
       "phL" : 5.7,
       "phH" : 6.4,
       "waterCycle" : 16,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 61
     },
     { "id" : "8",
@@ -97,6 +105,7 @@
       "phL" : 5.7,
       "phH" : 6.4,
       "waterCycle" : 16,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 61
     },
     { "id" : "9",
@@ -108,6 +117,7 @@
       "phL" : 5.7,
       "phH" : 6.4,
       "waterCycle" : 16,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 61
     },
     { "id" : "10",
@@ -119,6 +129,7 @@
       "phL" : 5.7,
       "phH" : 6.4,
       "waterCycle" : 16,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 61
     },
     { "id" : "11",
@@ -130,6 +141,7 @@
       "phL" : 5.7,
       "phH" : 6.4,
       "waterCycle" : 16,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 61
     },
     { "id" : "12",
@@ -141,6 +153,7 @@
       "phL" : 5.7,
       "phH" : 6.4,
       "waterCycle" : 16,
+      "img" : "static/img/blueberries.jpg",
       "lifeCycle" : 61
     }
   ],
@@ -155,6 +168,7 @@
       "phL" : 6.1,
       "phH" : 7.2,
       "waterCycle" : 12,
+      "img" : "static/img/blueberries.jpg",
       "lifeCycle" : 76
     },
     { "id" : "1001",
@@ -166,6 +180,7 @@
       "phL" : 6.6,
       "phH" : 7.7,
       "waterCycle" : 6,
+      "img" : "static/img/blueberries.jpg",
       "lifeCycle" : 45
     },
     { "id" : "1002",
@@ -176,7 +191,8 @@
       "humL" : 12,
       "phL" : 5.7,
       "phH" : 6.4,
-      "waterCycle" : 16,
+      "waterCycle" : 6,
+      "img" : "static/img/blueberries.jpg",
       "lifeCycle" : 61
     },
     { "id" : "1003",
@@ -188,6 +204,7 @@
       "phL" : 6.1,
       "phH" : 7.2,
       "waterCycle" : 12,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 76
     },
     { "id" : "1004",
@@ -199,6 +216,7 @@
       "phL" : 6.1,
       "phH" : 7.2,
       "waterCycle" : 12,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 76
     },
     { "id" : "1005",
@@ -210,6 +228,7 @@
       "phL" : 6.1,
       "phH" : 7.2,
       "waterCycle" : 12,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 76
     },
     { "id" : "1006",
@@ -221,6 +240,7 @@
       "phL" : 6.1,
       "phH" : 7.2,
       "waterCycle" : 12,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 76
     },
     { "id" : "1007",
@@ -232,6 +252,7 @@
       "phL" : 6.1,
       "phH" : 7.2,
       "waterCycle" : 12,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 76
     },
     { "id" : "1008",
@@ -243,6 +264,7 @@
       "phL" : 6.1,
       "phH" : 7.2,
       "waterCycle" : 12,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 76
     },
     { "id" : "1009",
@@ -254,6 +276,7 @@
       "phL" : 6.1,
       "phH" : 7.2,
       "waterCycle" : 12,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 76
     },
     { "id" : "1010",
@@ -265,6 +288,7 @@
       "phL" : 6.1,
       "phH" : 7.2,
       "waterCycle" : 12,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 76
     },
     { "id" : "1011",
@@ -276,6 +300,7 @@
       "phL" : 6.1,
       "phH" : 7.2,
       "waterCycle" : 12,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 76
     },
     { "id" : "1012",
@@ -287,6 +312,7 @@
       "phL" : 6.1,
       "phH" : 7.2,
       "waterCycle" : 12,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 76
     },
     { "id" : "1013",
@@ -298,6 +324,7 @@
       "phL" : 6.1,
       "phH" : 7.2,
       "waterCycle" : 12,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 76
     },
     { "id" : "1010",
@@ -309,6 +336,7 @@
       "phL" : 6.1,
       "phH" : 7.2,
       "waterCycle" : 12,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 76
     }
   ],
@@ -323,6 +351,7 @@
       "phL" : 6.1,
       "phH" : 7.2,
       "waterCycle" : 12,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 76
     },
     { "id" : "2001",
@@ -334,6 +363,7 @@
       "phL" : 6.6,
       "phH" : 7.7,
       "waterCycle" : 6,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 45
     },
     { "id" : "2002",
@@ -345,6 +375,7 @@
       "phL" : 5.7,
       "phH" : 6.4,
       "waterCycle" : 16,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 61
     },
     { "id" : "2003",
@@ -356,6 +387,7 @@
       "phL" : 6.6,
       "phH" : 7.7,
       "waterCycle" : 6,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 45
     },
     { "id" : "2004",
@@ -367,6 +399,7 @@
       "phL" : 6.6,
       "phH" : 7.7,
       "waterCycle" : 6,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 45
     },
     { "id" : "2005",
@@ -378,6 +411,7 @@
       "phL" : 6.6,
       "phH" : 7.7,
       "waterCycle" : 6,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 45
     },
     { "id" : "2006",
@@ -389,6 +423,7 @@
       "phL" : 6.6,
       "phH" : 7.7,
       "waterCycle" : 6,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 45
     },
     { "id" : "2007",
@@ -400,6 +435,7 @@
       "phL" : 6.6,
       "phH" : 7.7,
       "waterCycle" : 6,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 45
     },
     { "id" : "2008",
@@ -411,6 +447,7 @@
       "phL" : 6.6,
       "phH" : 7.7,
       "waterCycle" : 6,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 45
     },
     { "id" : "2009",
@@ -422,6 +459,7 @@
       "phL" : 6.6,
       "phH" : 7.7,
       "waterCycle" : 6,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 45
     },
     { "id" : "2010",
@@ -433,6 +471,7 @@
       "phL" : 6.6,
       "phH" : 7.7,
       "waterCycle" : 6,
+      "img" : "http://bbctechnologies.com/wordpress/wp-content/uploads/2012/05/dsc_0767.jpg",
       "lifeCycle" : 45
     }
   ]

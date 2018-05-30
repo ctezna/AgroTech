@@ -70,13 +70,12 @@
     var txt2 = '<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header">';
     var txt3 = '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
     var txt4 = '<h4 class="modal-title" id="plantName">';
-    var txt5 = '</h4></div><div id="plantCard" class="modal-body"><ul>';
-    var txt6 = '</ul></div><div class="modal-footer"><button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>';
-    //var txt7 = '<button type="submit" onclick="localStorage.plantId=';
-    //var txt8 = ';location.href='+"'index.html'" +';" class="btn btn-success btn-default pull-right"><span class="glyphicon glyphicon-tree-deciduous"></span> Select</button>';
-    var txt7 = '<button type="submit" onclick="passId(';
-    var txt8 = ');location.href='+"'index.html'" +';" class="btn btn-success btn-default pull-right"><span class="glyphicon glyphicon-tree-deciduous"></span> Select</button>';
-    var txt9 = '</div></div></div></div>';
+    var txt5 = '</h4></div><div id="plantCard" class="modal-body"><div class="row"><div class="col-xs-7 col-md-7"><ul>';
+    var txt6 = '</ul></div><div class="col-xs-5 col-md-5"><img src="';
+    var txt7 = '" class="img-responsive" alt="Plant"></div></div></div><div class="modal-footer"><button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>';
+    var txt8 = '<button type="submit" onclick="passId(';
+    var txt9 = ');location.href='+"'index.html'" +';" class="btn btn-success btn-default pull-right"><span class="glyphicon glyphicon-tree-deciduous"></span> Select</button>';
+    var txt10 = '</div></div></div></div>';
     for(var i = 0; i < objs.length; i++){
       var html = '';
       var name = objs[i].name;
@@ -93,27 +92,71 @@
       var phHtml = '<li><strong>Soil pH Level Range: </strong>'+ phL +' - '+ phH +'</li>';
       var wc = objs[i].waterCycle;
       var wcHtml = '<li><strong>Watering Cycle: </strong>1 Liter per ' + wc +' Hours</li>';
+      var imgsrc = objs[i].img;
       var lc = objs[i].lifeCycle;
       var lcHtml = '<li><strong>Average Life Cycle: </strong>' + lc +' Days</li>';
-      html = txt + id + txt1 + txt2 + txt3 + txt4 + name + txt5 + snameHtml + tempHtml + humHtml + phHtml + wcHtml + lcHtml + txt6 + txt7 + id + txt8 + txt9;
+      html = txt + id + txt1 + txt2 + txt3 + txt4 + name + txt5 + snameHtml + tempHtml + humHtml + phHtml + wcHtml + lcHtml + txt6 + imgsrc + txt7 + txt8 + id + ',' + lc + txt9 + txt10;
       document.getElementById('modals').insertAdjacentHTML("beforeend",html);
     }
   }
 </script>
 <script>
-  function passId(id){
+  Date.prototype.addDays = function(days) {
+    var dat = new Date(this.valueOf());
+    dat.setDate(dat.getDate() + days);
+    return dat;
+  }
+  function passId(id,lc){
+    var months = ["Janurary", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var d = new Date();
     if(localStorage.plantId0==null){
       localStorage.plantId0=id;
+      d = d.addDays(lc);
+      var month = d.getMonth() + 1;
+      var day = d.getDate();
+      var year = d.getFullYear();
+      var dateLet = months[month-1] +" "+ day + ", " + year;
+      localStorage.p0date = dateLet;
     }else if(localStorage.plantId1==null){
       localStorage.plantId1=id;
+      d = d.addDays(lc);
+      var month = d.getMonth() + 1;
+      var day = d.getDate();
+      var year = d.getFullYear();
+      var dateLet = months[month-1] +" "+ day + ", " + year;
+      localStorage.p1date = dateLet;
     }else if(localStorage.plantId2==null){
       localStorage.plantId2=id;
+      d = d.addDays(lc);
+      var month = d.getMonth() + 1;
+      var day = d.getDate();
+      var year = d.getFullYear();
+      var dateLet = months[month-1] +" "+ day + ", " + year;
+      localStorage.p2date = dateLet;
     }else if(localStorage.plantId3==null){
       localStorage.plantId3=id;
+      d = d.addDays(lc);
+      var month = d.getMonth() + 1;
+      var day = d.getDate();
+      var year = d.getFullYear();
+      var dateLet = months[month-1] +" "+ day + ", " + year;
+      localStorage.p3date = dateLet;
     }else if(localStorage.plantId4==null){
       localStorage.plantId4=id;
+      d = d.addDays(lc);
+      var month = d.getMonth() + 1;
+      var day = d.getDate();
+      var year = d.getFullYear();
+      var dateLet = months[month-1] +" "+ day + ", " + year;
+      localStorage.p4date = dateLet;
     }else if(localStorage.plantId5==null){
       localStorage.plantId5=id;
+      d = d.addDays(lc);
+      var month = d.getMonth() + 1;
+      var day = d.getDate();
+      var year = d.getFullYear();
+      var dateLet = months[month-1] +" "+ day + ", " + year;
+      localStorage.p5date = dateLet;
     }
   }
 </script>

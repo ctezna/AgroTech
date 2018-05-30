@@ -1,11 +1,11 @@
 import serial
 
-def getReadings():
+def getReadings(serialPort):
     try:
-        ser = serial.Serial('/dev/cu.usbmodem411', 9600, timeout=1)
+        ser = serial.Serial(serialPort, 9600, timeout=1)
     except:
         try:
-            ser = serial.Serial('/dev/cu.usbmodem411', 9600, timeout=1)
+            ser = serial.Serial(serialPort, 9600, timeout=1)
         except:
             return('ERROR: SERIAL CONNECTION')
 

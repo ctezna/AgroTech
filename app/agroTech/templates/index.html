@@ -173,6 +173,7 @@
             <th>RH</th>
             <th>pH</th>
             <th>Growth Cycle</th>
+            <th>Projected Finish</th>
           </tr>
           <div id="SmartPots">
             <tr id="pot-1" class="danger"></tr>
@@ -199,47 +200,68 @@
       <script>
         function clearPots(){
           localStorage.removeItem("plantId0");
+          localStorage.removeItem("p0date");
           localStorage.removeItem("plantId1");
+          localStorage.removeItem("p1date");
           localStorage.removeItem("plantId2");
+          localStorage.removeItem("p2date");
           localStorage.removeItem("plantId3");
+          localStorage.removeItem("p3date");
           localStorage.removeItem("plantId4");
+          localStorage.removeItem("p4date");
           localStorage.removeItem("plantId5");
+          localStorage.removeItem("p5date");
         }
         var plantId = -1;
+        var date = '';
+        var dates = [];
         var pots = [];
         if(localStorage.temp == null){
           localStorage.temp = 0;
         }
         if(localStorage.plantId0!=null){
           plantId = localStorage.plantId0;
+          date = localStorage.p0date;
+          dates.push(date);
           pots.push(plantId);
         }
         if(localStorage.plantId1!=null){
           plantId = localStorage.plantId1;
+          date = localStorage.p1date;
+          dates.push(date);
           pots.push(plantId);
         }
         if(localStorage.plantId2!=null){
           plantId = localStorage.plantId2;
+          date = localStorage.p2date;
+          dates.push(date);
           pots.push(plantId);
         }
         if(localStorage.plantId3!=null){
           plantId = localStorage.plantId3;
+          date = localStorage.p3date;
+          dates.push(date);
           pots.push(plantId);
         }
         if(localStorage.plantId4!=null){
           plantId = localStorage.plantId4;
+          date = localStorage.p4date;
+          dates.push(date);
           pots.push(plantId);
         }
         if(localStorage.plantId5!=null){
           plantId = localStorage.plantId5;
+          date = localStorage.p5date;
+          dates.push(date);
           pots.push(plantId);
         }
         pLen = pots.length;
         for(var i = 0; i < pLen; i++){
           var plant = pots[i];
-          updatePot(plant,i+1,{{"{0:0.1f}".format(temp) }},{{"{0:0.1f}".format(hum) }},{{"{0:0.1f}".format(ph)}},localStorage.temp);
+          var date = dates[i];
+          updatePot(plant,i+1,{{"{0:0.1f}".format(temp) }},{{"{0:0.1f}".format(hum) }},{{"{0:0.1f}".format(ph)}},localStorage.temp,date);
         }
-        function addPot(id_pot,name,temp,rh,ph,lc,alertT,alertH,alertP,tempState){
+        function addPot(id_pot,name,temp,rh,ph,lc,alertT,alertH,alertP,tempState,date){
           var s = '<td><a href="fruits.html" style="text-decoration: none; color: #000000;">'+ name + '</a></td>';
           var s1 = '';
           var faren = temp * 9/5.0 + 32;
@@ -275,24 +297,24 @@
           }
           var st1 = '';
           var st2 = '';
-          if(lc < 34){
-            st1 = '<td><div class="progress"><div class="progress-bar progress-bar-warning progress-bar-striped active" style="width:'+lc+'%;">';
-            st2 = st1 + lc + '%</div></div></td>';
-          }
-          if(lc < 67 && lc > 34){
+          if(lc <= 45){
             st1 = '<td><div class="progress"><div class="progress-bar progress-bar-info progress-bar-striped active" style="width:'+lc+'%;">';
-            st2 = st1 + lc + '%</div></div></td>';
+            st2 = st1 + lc + ' Days</div></div></td><td>'+ date +'</td>';
           }
-          if(lc >= 67){
-            st1 = '<td><div class="progress"><div class="progress-bar progress-bar-success progress-bar-striped active" style="width:'+lc+'%;">';
-            st2 = st1 + lc + '%</div></div></td>';
+          if(lc < 75 && lc > 45){
+            st1 = '<td><div class="progress"><div class="progress-bar progress-bar-sucess progress-bar-striped active" style="width:'+lc+'%;">';
+            st2 = st1 + lc + ' Days</div></div></td><td>'+ date +'</td>';
+          }
+          if(lc >= 75){
+            st1 = '<td><div class="progress"><div class="progress-bar progress-bar-warning progress-bar-striped active" style="width:'+lc+'%;">';
+            st2 = st1 + lc + ' Days</div></div></td><td>'+ date +'</td>';
           }
           var sf = '</tr>';
           var html = s + s1 + s2 + st + st2;
           var pot = 'pot' + id_pot;
           document.getElementById(pot).innerHTML = html;
         }
-        function updatePot(plantId, pId, temp, hum, ph, tempState){
+        function updatePot(plantId, pId, temp, hum, ph, tempState,date){
           var requestURL = 'static/data/plants.json';
           var request = new XMLHttpRequest();
           request.open('GET', requestURL);
@@ -357,14 +379,12 @@
                 }
               }
             }
-            if((temp <= 10 || temp >= 50) && temp != -404){temp = (tempH+tempL)/2;}
-            if(temp >= tempH || temp <= tempL){
+            if((temp >= tempH || temp <= tempL) && temp != -404){
               if(potId > 0){
                 potId = potId * -1;
               }
               alertT = 1;
             }
-            if(hum > 100){hum = (humH+humL)/2;}
             if(hum >= humH || hum <= humL){
               if(potId > 0){
                 potId = potId * -1;
@@ -392,14 +412,14 @@
               var dt = new Date();
               currentTime = dt.getHours();
               currentDate = dt.getDate();
-              if(((currentTime - lastNotifyT) >= 1) || (currentDate - lastNotifyD) >= 1){
+              if(((currentTime - lastNotifyT) >= 4) || (currentDate - lastNotifyD) >= 1){
                 var d = new Date();
                 localStorage.notifiedH = d.getHours();
                 localStorage.notifiedD = d.getDate();
                 post('/index.html',{email: localStorage.email},'post');
               }
             }
-            addPot(potId,name,temp,hum,ph,lc,alertT,alertH,alertP,tempState);
+            addPot(potId,name,temp,hum,ph,lc,alertT,alertH,alertP,tempState,date);
           }
         }
         </script>

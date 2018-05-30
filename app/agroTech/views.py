@@ -21,11 +21,12 @@ def index():
 	# humidity = random.uniform(1,1001)
 	# temperature = random.uniform(-20,100)
 	# ph = random.uniform(6,7)
-	readings = getReadings()
+	readings = getReadings('/dev/cu.usbmodem411')
 	if readings == 'ERROR: SERIAL CONNECTION':
-		readings = getReadings()
+		readings = getReadings('/dev/cu.usbmodem411')
 		if readings == 'ERROR: SERIAL CONNECTION':
 			return render_template("index.html", temp=-404, hum=-1, ph=-1)
+			
 	temperature = float(readings[0])
 	humidity = float(readings[1])
 	ph = float(readings[2])
