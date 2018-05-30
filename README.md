@@ -8,8 +8,7 @@ python3
 microcontroller for sensors with serial communication
 # Installation
 `git clone https://github.com/ctezna/AgroTech.git`<br>
-`cd AgroTech/`<br>
-`cd app/`<br>
+`cd AgroTech/app/`<br>
 `sudo pip3 install -r requirements.txt`<br>
 `gunicorn -b 'RPI IP Address':'PORT' agroTech:app`<br>
 # Ex.
