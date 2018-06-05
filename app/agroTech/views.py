@@ -11,7 +11,7 @@ app.debug = True
 randTest = False
 
 @app.route('/')
-@app.route('/index.html',methods=('GET','POST'))
+@app.route('/index',methods=('GET','POST'))
 def index():
 	if request.method == 'POST':
 		email = request.form['email']
@@ -20,51 +20,73 @@ def index():
 		sendemail(email,subject,msg)
 
 
-	readings = getReadings('/dev/cu.usbmodem411')
+	readings = getReadings('/dev/ttyACM0')
 	if readings == 'ERROR: SERIAL CONNECTION':
-		readings = getReadings('/dev/cu.usbmodem411')
+		readings = getReadings('/dev/ttyACM0')
 		if readings == 'ERROR: SERIAL CONNECTION':
-			readings = [-404, -1, -1]
+			readings = [-404, -1, -1, -1]
 
 	temperature = float(readings[0])
 	humidity = float(readings[1])
 	ph = float(readings[2])
+	gndHum = float(readings[3])
 	if humidity is None:
 		humidity = -1
 	if temperature is None:
 		temperature = -404
 	if ph is None:
 		ph = -1
+	if gndHum is None:
+		gndHum = -1
 
 	if randTest == True:
 		humidity = random.uniform(1,100)
 		temperature = random.uniform(10,40)
 		ph = random.uniform(6,7)
-	return render_template("index.html", temp=temperature, hum=humidity, ph=ph)
+		gndHum = random.uniform(1,100)
+		humidity1 = random.uniform(1,100)
+		temperature1 = random.uniform(10,40)
+		ph1 = random.uniform(6,7)
+		gndHum1 = random.uniform(1,100)
+		readings = [temperature, humidity, ph, gndHum, temperature1, humidity1, ph1, gndHum1]
+	return render_template("index.html", temp=temperature, hum=humidity, ph=ph, gndHum=gndHum)
 
-@app.route('/settings.html')
+@app.route('/settings')
 def settings():
     return render_template('settings.html')
 
-@app.route('/vegetables.html')
+@app.route('/vegetables')
 def vegetables():
     return render_template('vegetables.html')
 
-@app.route('/fruits.html')
+@app.route('/fruits')
 def fruits():
     return render_template('fruits.html')
 
-@app.route('/other.html')
+@app.route('/other')
 def other():
     return render_template('other.html')
 
-@app.route('/aboutUs.html')
+@app.route('/aboutUs')
 def aboutUs():
     return render_template('aboutUs.html')
 
-@app.route('/newPot.html')
+@app.route('/newPot')
 def newPot():
 	return render_template('newPot.html')
+
+@app.route('/contact',methods=('GET','POST'))
+def contact():
+	if request.method == 'POST':
+		fname = request.form['firstname']
+		lname = request.form['lastname']
+		sub = request.form['subject']
+		msg = request.form['message']
+		sub = "From: " + fname + " " + lname + " Sub: " + sub
+		sendemail("agrotech.notification@gmail.com",sub,msg)
+		return render_template('aboutUs.html')
+
+	return render_template('contact.html')
 
 @app.errorhandler(404)
 def page_not_found(error):

@@ -14,30 +14,36 @@
 {% endblock %}
 
 {% block nav %}
-<li><a href="index.html"><span class="glyphicon glyphicon-home"></span> Home </a></li>
+<li><a href="index"><span class="glyphicon glyphicon-home"></span> Home </a></li>
 <li class="active" class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus"></span> New Pot <span class="caret"></span><span class="sr-only">(current)</span></a>
 <ul class="dropdown-menu">
-  <li><a href="vegetables.html">Vegetables</a></li>
+  <li><a href="vegetables">Vegetables</a></li>
   <li role="separator" class="divider"></li>
-  <li><a href="fruits.html">Fruits</a></li>
+  <li><a href="fruits">Fruits</a></li>
   <li role="separator" class="divider"></li>
-  <li><a href="other.html">Other</a></li>
+  <li><a href="other">Other</a></li>
 </ul>
 </li>
-<li><a href="settings.html"><span class="glyphicon glyphicon-cog"></span> Settings </a></li>
-<li><a href="aboutUs.html"><span class="glyphicon glyphicon-info-sign"></span> About Us</a></li>
+<li><a href="settings"><span class="glyphicon glyphicon-cog"></span> Settings </a></li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-info-sign"></span> About Us <span class="caret"></span><span class="sr-only">(current)</span></a>
+  <ul class="dropdown-menu">
+    <li><a href="aboutUs">Information</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="contact">Contact</a></li>
+  </ul>
+</li>
 {% endblock %}
 
 {% block body %}
 <div class="container"><br><br></div>
 <div class="container">
   <p class="lead">Getting started is quick and easy.</p>
-  <p>Begin by first making sure your <b>Agro</b>Tech <b>Smart</b>Pot is clean and that the fabric grow pot has been properly
-  washed. Latch the pot onto the frame using the hooks located on the sides of the frame. Fill the grow pot with the correct
-  soil for the plant species. Make sure sensors are in place and everything is connected. Turn on the AgroTech computer by flipping on the red
-  switch. Allow for system to start up, then proceed to installation process if it is your first use, otherwise continue on with the
-  AgroTech software.</p>
+  <p>Begin by first making sure your <b>Agro</b>Tech <b>Smart</b>Bench is connected and your pot is mounted on top. Fill the grow pot with the correct
+  soil for the plant species. Make sure sensors are in place before adding the plant to your collection. Allow for system to start up, then proceed to installation
+  process if it is your first use, otherwise continue on with the AgroTech software. To build your own <b>Smart</b>Bench check out the Information page and download
+  the assembly instructions.</p>
 </div><br><br>
 <div class="container">
   <div class="row">
@@ -46,7 +52,7 @@
         <img src="static/img/pic1.jpg" alt="Flowers">
         <div class="caption">
           <h3>Setup</h3>
-          <p>Follow all setup and maintance indications provided with the Agro SmartPot or found on the AgroTech repository.</p>
+          <p>Follow all setup and maintance indications provided with the Agro SmartBench or found on the AgroTech repository.</p>
           <br>
         </div>
       </div>
@@ -104,9 +110,9 @@
   <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-3">
-      <button type="button" class="btn btn-success" onclick="location.href='vegetables.html';">Vegetables</button>
-      <button type="button" class="btn btn-success" onclick="location.href='fruits.html';">Fruits</button>
-      <button type="button" class="btn btn-success" onclick="location.href='other.html';">Other</button>
+      <button type="button" class="btn btn-success" onclick="location.href='vegetables';">Vegetables</button>
+      <button type="button" class="btn btn-success" onclick="location.href='fruits';">Fruits</button>
+      <button type="button" class="btn btn-success" onclick="location.href='other';">Other</button>
     </div>
     <div class="col-md-5"></div>
   </div>

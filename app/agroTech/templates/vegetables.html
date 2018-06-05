@@ -14,27 +14,34 @@
 {% endblock %}
 
 {% block nav %}
-<li><a href="index.html"><span class="glyphicon glyphicon-home"></span> Home </a></li>
+<li><a href="index"><span class="glyphicon glyphicon-home"></span> Home </a></li>
 <li class="active" class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus"></span> New Pot <span class="caret"></span><span class="sr-only">(current)</span></a>
 <ul class="dropdown-menu">
-  <li class="active"><a href="vegetables.html">Vegetables</a></li>
+  <li class="active"><a href="vegetables">Vegetables</a></li>
   <li role="separator" class="divider"></li>
-  <li><a href="fruits.html">Fruits</a></li>
+  <li><a href="fruits">Fruits</a></li>
   <li role="separator" class="divider"></li>
-  <li><a href="other.html">Other</a></li>
+  <li><a href="other">Other</a></li>
 </ul>
 </li>
-<li><a href="settings.html"><span class="glyphicon glyphicon-cog"></span> Settings </a></li>
-<li><a href="aboutUs.html"><span class="glyphicon glyphicon-info-sign"></span> About Us</a></li>
+<li><a href="settings"><span class="glyphicon glyphicon-cog"></span> Settings </a></li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-info-sign"></span> About Us <span class="caret"></span><span class="sr-only">(current)</span></a>
+  <ul class="dropdown-menu">
+    <li><a href="aboutUs">Information</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="contact">Contact</a></li>
+  </ul>
+</li>
 {% endblock %}
 
 {% block body %}
 <div class="container">
   <ol class="breadcrumb">
     <li class="active">Vegetables</li>
-    <li><a href="fruits.html">Fruits</a></li>
-    <li><a href="other.html">Other</a></li>
+    <li><a href="fruits">Fruits</a></li>
+    <li><a href="other">Other</a></li>
   </ol>
 </div>
 <div class="container">
@@ -74,7 +81,7 @@
     var txt6 = '</ul></div><div class="col-xs-5 col-md-5"><img src="';
     var txt7 = '" class="img-responsive" alt="Plant"></div></div></div><div class="modal-footer"><button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>';
     var txt8 = '<button type="submit" onclick="passId(';
-    var txt9 = ');location.href='+"'index.html'" +';" class="btn btn-success btn-default pull-right"><span class="glyphicon glyphicon-tree-deciduous"></span> Select</button>';
+    var txt9 = ');location.href='+"'index'" +';" class="btn btn-success btn-default pull-right"><span class="glyphicon glyphicon-tree-deciduous"></span> Select</button>';
     var txt10 = '</div></div></div></div>';
     for(var i = 0; i < objs.length; i++){
       var html = '';
@@ -84,18 +91,19 @@
       var snameHtml = '<li><strong>Scientific Name: </strong><em>'+ scName +'</em></li>';
       var tempL = objs[i].tempL;
       var tempH = objs[i].tempH;
-      var tempHtml = '<li><strong>Temperature Range: </strong>'+ tempL +' - '+ tempH +'</li>';
+      var tempHtml = '<li><strong>Temperature Range: </strong>'+ tempL +' - '+ tempH +'<sup> o</sup>C</li>';
       var humL = objs[i].humL;
-      var humHtml = '<li><strong>Minimum Humedity Recommended: </strong>' + humL +'%</li>';
+      var humH = objs[i].humH;
+      var humHtml = '<li><strong>Air Humedity Range: </strong>' + humL +' - '+ humH +'%</li>';
       var phL = objs[i].phL;
       var phH = objs[i].phH;
       var phHtml = '<li><strong>Soil pH Level Range: </strong>'+ phL +' - '+ phH +'</li>';
-      var wc = objs[i].waterCycle;
-      var wcHtml = '<li><strong>Watering Cycle: </strong>1 Liter per ' + wc +' Hours</li>';
+      var comps = objs[i].comp;
+      var compHtml = '<li><strong>Companions: </strong>'+ comps +'</li>';
       var imgsrc = objs[i].img;
       var lc = objs[i].lifeCycle;
       var lcHtml = '<li><strong>Average Life Cycle: </strong>' + lc +' Days</li>';
-      html = txt + id + txt1 + txt2 + txt3 + txt4 + name + txt5 + snameHtml + tempHtml + humHtml + phHtml + wcHtml + lcHtml + txt6 + imgsrc + txt7 + txt8 + id + ',' + lc + txt9 + txt10;
+      html = txt + id + txt1 + txt2 + txt3 + txt4 + name + txt5 + snameHtml + tempHtml + humHtml + phHtml + compHtml + lcHtml + txt6 + imgsrc + txt7 + txt8 + id + ',' + lc + txt9 + txt10;
       document.getElementById('modals').insertAdjacentHTML("beforeend",html);
     }
   }

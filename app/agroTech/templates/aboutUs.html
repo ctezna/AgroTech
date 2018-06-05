@@ -1,7 +1,6 @@
 {% extends 'layout.html' %}
 
 {% block refresh %}
-<meta http-equiv="refresh" content="60">
 {% endblock %}
 
 {% block style%}
@@ -14,124 +13,86 @@
 {% endblock %}
 
 {% block nav %}
-<li><a href="index.html"><span class="glyphicon glyphicon-home"></span> Home </a></li>
+<li><a href="index"><span class="glyphicon glyphicon-home"></span> Home </a></li>
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus"></span> New Pot <span class="caret"></span></a>
 <ul class="dropdown-menu">
-  <li><a href="vegetables.html">Vegetables</a></li>
+  <li><a href="vegetables">Vegetables</a></li>
   <li role="separator" class="divider"></li>
-  <li><a href="fruits.html">Fruits</a></li>
+  <li><a href="fruits">Fruits</a></li>
   <li role="separator" class="divider"></li>
-  <li><a href="other.html">Other</a></li>
+  <li><a href="other">Other</a></li>
 </ul>
 </li>
-<li><a href="settings.html"><span class="glyphicon glyphicon-cog"></span> Settings </a></li>
-<li class="active"><a href="aboutUs.html"><span class="glyphicon glyphicon-info-sign"></span> About Us <span class="sr-only">(current)</span></a></li>
+<li><a href="settings"><span class="glyphicon glyphicon-cog"></span> Settings </a></li>
+<li class="active" class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-info-sign"></span> About Us <span class="caret"></span><span class="sr-only">(current)</span></a>
+  <ul class="dropdown-menu">
+    <li class="active"><a href="aboutUs">Information</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="contact">Contact</a></li>
+  </ul>
+</li>
 {% endblock %}
 
 {% block body %}
-<div class="container">
-  <br>
-      <p class="lead">Pretty neat huh? Check out how it all works!</p>
-      <p><mark>Lorem ipsum dolor sit amet</mark>, consectetur adipisicing elit, sed do eiusmod
-      tempor <del>incididunt ut labore</del> et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation <u>ullamco laboris nisi</u> ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-      non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-      <hr>
-
-      <!-- ALIGNMENT & TRANSFORMATION-->
-      <p class="text-left text-lowercase">Left aligned text.</p>
-      <p class="text-center text-uppercase">Center aligned text.</p>
-      <p class="text-right text-capitalize">Right aligned text.</p>
-      <p class="text-justify">Justified text.</p>
-      <p class="text-nowrap">No wrap text.</p>
-
-      <!-- QUICK FLOATS -->
-      <div class="pull-right">Div floated to right</div>
-      <div class="pull-left">Div floated to left</div>
-
-      <!-- CLEAR FLOAT -->
-      <div class="clearfix"></div>
-
-      <hr>
-
-    <!-- GRIDS -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-sm-8 col-xs-8">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-4">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-md-3">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-        </div>
-        <div class="col-md-3">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-        </div>
-        <div class="col-md-3">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-        </div>
-        <div class="col-md-3">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-md-6">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-        <div class="col-md-6">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-1">
-          <h3>Box</h3>
-        </div>
-        <div class="col-md-1">
-          <h3>Box</h3>
-        </div>
-        <div class="col-md-1">
-          <h3>Box</h3>
-        </div>
-        <div class="col-md-1">
-          <h3>Box</h3>
-        </div>
-        <div class="col-md-1">
-          <h3>Box</h3>
-        </div>
-        <div class="col-md-1">
-          <h3>Box</h3>
-        </div>
-        <div class="col-md-1">
-          <h3>Box</h3>
-        </div>
-        <div class="col-md-1">
-          <h3>Box</h3>
-        </div>
-        <div class="col-md-1">
-          <h3>Box</h3>
-        </div>
-        <div class="col-md-1">
-          <h3>Box</h3>
-        </div>
-        <div class="col-md-1">
-          <h3>Box</h3>
-        </div>
-        <div class="col-md-1">
-          <h3>Box</h3>
-        </div>
-      </div>
+<div class="container"><br>
+  <p class="lead">Growing in 5 Simple Steps</p>
+  <div class="row">
+    <div class="col-md-4 col-sm-4">
+      <br><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
-
-    <div style="height:400px"></div>
+    <div class="col-md-8 col-sm-8">
+      <img src="static/img/agroTech_flowchart.png" class="img-responsive" alt="Use Flowchart">
+    </div>
+  </div>
+<br>
+  <p class="lead">Pretty neat huh? Check out how it all works!</p>
+  <div class="row">
+    <div class="col-md-1 col-sm-1 col-xs-1"></div>
+    <div class="col-md-10 col-sm-10 col-xs-10">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <div class="col-md-1 col-sm-1 col-xs-1"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-sm-4">
+      <div class="row">
+        <div class="col-md-4 col-sm-4"></div>
+        <div class="col-md-4 col-sm-4"><h3>Physical</h3></div>
+        <div class="col-md-4 col-sm-4"></div>
+      </div>
+      <img src="static/img/agroTech_physicalDia.png" class="img-responsive" alt="Physical View">
+    </div>
+    <div class="col-md-4 col-sm-4"><br><br><br><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <div class="col-md-4 col-sm-4">
+      <div class="row">
+        <div class="col-md-4 col-sm-4"></div>
+        <div class="col-md-4 col-sm-4"><h3>Logical</h3></div>
+        <div class="col-md-4 col-sm-4"></div>
+      </div>
+      <img src="static/img/agroTech_architecture.png" class="img-responsive" alt="Logical View">
+    </div>
+  </div><br>
+</div>
+<div class="container">
+  <p class="lead">Maintance and Care</p>
+  <div class="row">
+    <div class="col-md-1 col-sm-1 col-xs-1"></div>
+    <div class="col-md-10 col-sm-10 col-xs-10">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <div class="col-md-1 col-sm-1 col-xs-1"></div>
+  </div><br>
+  <div class"row">
+    <div class="col-md-10 col-sm-10 col-xs-10"></div>
+    <div class="col-md-2 col-sm-2">
+      <h4>Build Your Own</h4>
+      &emsp;<a href="static/img/agroTech_flowchartDia.png" download="agroTech_Assembly">
+      <img border="0" src="static/img/assembly-instructions.png" alt="Download" width="84" height="92">
+    </a>
+    </div>
+  </div>
+</div>
 {% endblock %}

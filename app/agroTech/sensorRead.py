@@ -15,6 +15,7 @@ def getReadings(serialPort):
     temp = -404
     hum = -1
     ph = -1
+    gndHum = -1
     for i in range(2,len(readings)+1):
         if i == 7:
             temp = readings[2:i]
@@ -25,10 +26,13 @@ def getReadings(serialPort):
         if i == 20:
             ph = readings[16:i]
             ph = ph.decode("utf-8")
+        if i == 27:
+            gndHum = readings[22:i]
+            gndHum = gndHum.decode("utf-8")
 
-    if temp != -404 and hum != -1 and ph != -1:
-        val = [temp,hum,ph]
+    if temp != -404 and hum != -1 and ph != -1 and gndHum != -1:
+        val = [temp,hum,ph,gndHum]
         return val
     else:
-        val = [-404,-1,-1]
+        val = [-404,-1,-1,-1]
         return val

@@ -24,19 +24,26 @@
 {% endblock %}
 
 {% block nav %}
-<li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span> Home <span class="sr-only">(current)</span></a></li>
+<li class="active"><a href="index"><span class="glyphicon glyphicon-home"></span> Home <span class="sr-only">(current)</span></a></li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus"></span> New Pot <span class="caret"></span></a>
   <ul class="dropdown-menu">
-    <li><a href="vegetables.html">Vegetables</a></li>
+    <li><a href="vegetables">Vegetables</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="fruits.html">Fruits</a></li>
+    <li><a href="fruits">Fruits</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="other.html">Other</a></li>
+    <li><a href="other">Other</a></li>
   </ul>
 </li>
-<li><a href="settings.html"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-<li><a href="aboutUs.html"><span class="glyphicon glyphicon-info-sign"></span> About Us</a></li>
+<li><a href="settings"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-info-sign"></span> About Us <span class="caret"></span><span class="sr-only">(current)</span></a>
+  <ul class="dropdown-menu">
+    <li><a href="aboutUs">Information</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="contact">Contact</a></li>
+  </ul>
+</li>
 {% endblock %}
 
 {% block body %}
@@ -164,13 +171,14 @@
 
     <!-- TYPOGRAPHY -->
     <div class="container">
-      <h1 class="page-header">My SmartPots <small>Working <em>more</em> so you do <em>less</em>.</small></h1>
+      <h1 class="page-header">My Plants <small>Working <em>more</em> so you do <em>less</em>.</small></h1>
       <div class="container">
         <table class="table table-striped table-bordered table-hover table-condensed">
           <tr>
             <th>Name</th>
             <th>Temp</th>
-            <th>RH</th>
+            <th>Air Humidity</th>
+            <th>Soil Humidity</th>
             <th>pH</th>
             <th>Growth Cycle</th>
             <th>Projected Finish</th>
@@ -190,10 +198,10 @@
             <tr id="pot6" class="success"></tr>
           </div>
         </table>
-        <button type="button" id="newPot" class="btn btn-primary" onclick="location.href='newPot.html';">
+        <button type="button" id="newPot" class="btn btn-primary" onclick="location.href='newPot';">
           New Pot
         </button>
-        <button type="button" id="clearPots" class="btn btn-danger pull-right" onclick="clearPots();location.href='index.html';">
+        <button type="button" id="clearPots" class="btn btn-danger pull-right" onclick="clearPots();location.href='index';">
           Clear Pots
         </button>
       </div>
@@ -219,37 +227,37 @@
         if(localStorage.temp == null){
           localStorage.temp = 0;
         }
-        if(localStorage.plantId0!=null){
+        if(localStorage.plantId0 != null){
           plantId = localStorage.plantId0;
           date = localStorage.p0date;
           dates.push(date);
           pots.push(plantId);
         }
-        if(localStorage.plantId1!=null){
+        if(localStorage.plantId1 != null){
           plantId = localStorage.plantId1;
           date = localStorage.p1date;
           dates.push(date);
           pots.push(plantId);
         }
-        if(localStorage.plantId2!=null){
+        if(localStorage.plantId2 != null){
           plantId = localStorage.plantId2;
           date = localStorage.p2date;
           dates.push(date);
           pots.push(plantId);
         }
-        if(localStorage.plantId3!=null){
+        if(localStorage.plantId3 != null){
           plantId = localStorage.plantId3;
           date = localStorage.p3date;
           dates.push(date);
           pots.push(plantId);
         }
-        if(localStorage.plantId4!=null){
+        if(localStorage.plantId4 != null){
           plantId = localStorage.plantId4;
           date = localStorage.p4date;
           dates.push(date);
           pots.push(plantId);
         }
-        if(localStorage.plantId5!=null){
+        if(localStorage.plantId5 != null){
           plantId = localStorage.plantId5;
           date = localStorage.p5date;
           dates.push(date);
@@ -259,19 +267,20 @@
         for(var i = 0; i < pLen; i++){
           var plant = pots[i];
           var date = dates[i];
-          updatePot(plant,i+1,{{"{0:0.1f}".format(temp) }},{{"{0:0.1f}".format(hum) }},{{"{0:0.1f}".format(ph)}},localStorage.temp,date);
+          updatePot(plant,i+1,{{"{0:0.1f}".format(temp)}},{{"{0:0.1f}".format(hum)}},{{"{0:0.1f}".format(ph)}},localStorage.temp,date,{{"{0:0.1f}".format(gndHum)}});
         }
-        function addPot(id_pot,name,temp,rh,ph,lc,alertT,alertH,alertP,tempState,date){
-          var s = '<td><a href="fruits.html" style="text-decoration: none; color: #000000;">'+ name + '</a></td>';
+        function addPot(id_pot,name,temp,rh,ph,lc,alertT,alertH,alertP,tempState,date,gndHum){
+          var s = '<td><a href="fruits" style="text-decoration: none; color: #000000;"><strong>'+ name + '</strong></a></td>';
           var s1 = '';
           var faren = temp * 9/5.0 + 32;
           faren = Math.round(faren*10)/10;
           if(tempState == 0){
-            s1 = '<td>'+ temp + '<sup> o</sup>C</td>';
+            s1 = '<td>'+ temp + '<sup>o</sup>C</td>';
           }else{
-            s1 = '<td>'+ faren + '<sup> o</sup>F</td>';
+            s1 = '<td>'+ faren + '<sup>o</sup>F</td>';
           }
           var s2 = '<td>'+ rh + '%</td>';
+          var s3 = '<td>'+ gndHum + '%</td>';
           var st = '<td>'+ ph + '</td>';
           if(alertT == 1){
             if(tempState == 0){
@@ -295,6 +304,9 @@
           if(ph == -1){
             st = '<td><strong> Sensor 404 </strong></td>';
           }
+          if(gndHum == -1){
+            s3 = '<td><strong> Sensor 404 </strong></td>';
+          }
           var st1 = '';
           var st2 = '';
           if(lc <= 45){
@@ -310,15 +322,15 @@
             st2 = st1 + lc + ' Days</div></div></td><td>'+ date +'</td>';
           }
           if(lc >= 100){
-            st1 = '<td><div class="progress"><div class="progress-bar progress-bar-warning progress-bar-striped active" style="width:'+lc+'%;">';
+            st1 = '<td><div class="progress"><div class="progress-bar progress-bar-warning progress-bar-striped active" style="width:'+100+'%;">';
             st2 = st1 + lc + ' Days</div></div></td><td>'+ date +'</td>';
           }
           var sf = '</tr>';
-          var html = s + s1 + s2 + st + st2;
+          var html = s + s1 + s2 + s3 + st + st2;
           var pot = 'pot' + id_pot;
           document.getElementById(pot).innerHTML = html;
         }
-        function updatePot(plantId, pId, temp, hum, ph, tempState,date){
+        function updatePot(plantId, pId, temp, hum, ph, tempState, date, gndHum){
           var requestURL = 'static/data/plants.json';
           var request = new XMLHttpRequest();
           request.open('GET', requestURL);
@@ -346,7 +358,7 @@
                   tempL = parseFloat(objs[i].tempL);
                   tempH = parseFloat(objs[i].tempH);
                   humL = parseFloat(objs[i].humL);
-                  humH = parseFloat("100");
+                  humH = parseFloat(objs[i].humH);
                   phL = parseFloat(objs[i].phL);
                   phH = parseFloat(objs[i].phH);
                   lc = parseFloat(objs[i].lifeCycle);
@@ -361,7 +373,7 @@
                   tempL = parseFloat(objs[i].tempL);
                   tempH = parseFloat(objs[i].tempH);
                   humL = parseFloat(objs[i].humL);
-                  humH = parseFloat("100");
+                  humH = parseFloat(objs[i].humH);
                   phL = parseFloat(objs[i].phL);
                   phH = parseFloat(objs[i].phH);
                   lc = parseFloat(objs[i].lifeCycle);
@@ -376,7 +388,7 @@
                   tempL = parseFloat(objs[i].tempL);
                   tempH = parseFloat(objs[i].tempH);
                   humL = parseFloat(objs[i].humL);
-                  humH = parseFloat("100");
+                  humH = parseFloat(objs[i].humH);
                   phL = parseFloat(objs[i].phL);
                   phH = parseFloat(objs[i].phH);
                   lc = parseFloat(objs[i].lifeCycle);
@@ -402,28 +414,27 @@
               alertP = 1;
             }
             if(potId < 0 && localStorage.notif == 1){
-              var lastNotifyT = -1;
-              var lastNotifyD = -1;
-              if(localStorage.notifiedH == null){
+              var lastNotify = -1;
+              if(localStorage.notified == null){
                 var d = new Date();
-                localStorage.notifiedH = d.getHours();
-                localStorage.notifiedD = d.getDate();
-                post('/index.html',{email: localStorage.email},'post');
+                localStorage.notified = d.getTime();
+                post('/index',{email: localStorage.email},'post');
               }else{
-                lastNotifyT = localStorage.notifiedH;
-                lastNotifyD = localStorage.notifiedD;
+                lastNotify = localStorage.notified;
               }
               var dt = new Date();
-              currentTime = dt.getHours();
-              currentDate = dt.getDate();
-              if(((currentTime - lastNotifyT) >= 4) || (currentDate - lastNotifyD) >= 1){
+              currentTime = dt.getTime();
+              var hours = 4;
+              if(localStorage.notifHrs != null){
+                hours = localStorage.notifHrs;
+              }
+              if((currentTime - lastNotify) >= (hours * 3600000)){
                 var d = new Date();
-                localStorage.notifiedH = d.getHours();
-                localStorage.notifiedD = d.getDate();
-                post('/index.html',{email: localStorage.email},'post');
+                localStorage.notified = d.getTime();
+                post('/index',{email: localStorage.email},'post');
               }
             }
-            addPot(potId,name,temp,hum,ph,lc,alertT,alertH,alertP,tempState,date);
+            addPot(potId,name,temp,hum,ph,lc,alertT,alertH,alertP,tempState,date,gndHum);
           }
         }
         </script>

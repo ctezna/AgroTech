@@ -14,20 +14,26 @@
 {% endblock %}
 
 {% block nav %}
-<li><a href="index.html"><span class="glyphicon glyphicon-home"></span> Home </a></li>
+<li><a href="index"><span class="glyphicon glyphicon-home"></span> Home </a></li>
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus"></span> New Pot <span class="caret"></span></a>
 <ul class="dropdown-menu">
-  <li><a href="vegetables.html">Vegetables</a></li>
+  <li><a href="vegetables">Vegetables</a></li>
   <li role="separator" class="divider"></li>
-  <li><a href="fruits.html">Fruits</a></li>
+  <li><a href="fruits">Fruits</a></li>
   <li role="separator" class="divider"></li>
-  <li><a href="other.html">Other</a></li>
+  <li><a href="other">Other</a></li>
 </ul>
 </li>
-<li class="active"><a href="settings.html"><span class="glyphicon glyphicon-cog"></span> Settings <span class="sr-only">(current)</span></a></li>
-<li><a href="aboutUs.html"><span class="glyphicon glyphicon-info-sign"></span> About Us</a></li>
-{% endblock %}
+<li class="active"><a href="settings"><span class="glyphicon glyphicon-cog"></span> Settings <span class="sr-only">(current)</span></a></li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-info-sign"></span> About Us <span class="caret"></span><span class="sr-only">(current)</span></a>
+  <ul class="dropdown-menu">
+    <li><a href="aboutUs">Information</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="contact">Contact</a></li>
+  </ul>
+</li>{% endblock %}
 
 {% block body %}
 <div class="page-header">
@@ -42,6 +48,7 @@
       &emsp;&emsp;<label><b>Date: </b></label><br><div id='date'></div>
       &emsp;&emsp;<label><b>Temperature: </b></label><br><div id='temp'></div>
       &emsp;&emsp;<label><b>Notifications: </b></label><br><div id='notif'></div>
+      &emsp;&emsp;<label><b>Notify Me Every ___ Hours: </b></label><br><div id='notifHrs'></div>
       &emsp;&emsp;<label><b>Email: </b></label><br><div id='email'></div>
       &emsp;&emsp;<br><input class="btn btn-success" type="submit" value="Save">
       <div class="row">
@@ -117,6 +124,27 @@
     document.getElementById("notif").innerHTML = html;
     document.getElementById("email").innerHTML = '&emsp;&emsp;&emsp;<input type="email" name="email" placeholder=' + '"' + usermail + '"' + '><br>';
   }
+  if(localStorage.notifHrs == null || localStorage.notifHrs == 4){
+    var st = '&emsp;&emsp;&emsp;<input type="radio" name="notifHrs" value="2"> 2';
+    var s = '&ensp;<input type="radio" name="notifHrs" value="4" checked> 4';
+    var s1 = '&ensp;<input type="radio" name="notifHrs" value="6"> 6<br>';
+    var html = st + s + s1;
+    document.getElementById("notifHrs").innerHTML = html;
+  }
+  if(localStorage.notifHrs == 2){
+    var st = '&emsp;&emsp;&emsp;<input type="radio" name="notifHrs" value="2" checked> 2';
+    var s = '&ensp;<input type="radio" name="notifHrs" value="4"> 4';
+    var s1 = '&ensp;<input type="radio" name="notifHrs" value="6"> 6<br>';
+    var html = st + s + s1;
+    document.getElementById("notifHrs").innerHTML = html;
+  }
+  if(localStorage.notifHrs == 6){
+    var st = '&emsp;&emsp;&emsp;<input type="radio" name="notifHrs" value="2"> 2';
+    var s = '&ensp;<input type="radio" name="notifHrs" value="4"> 4';
+    var s1 = '&ensp;<input type="radio" name="notifHrs" value="6" checked> 6<br>';
+    var html = st + s + s1;
+    document.getElementById("notifHrs").innerHTML = html;
+  }
 </script>
 <script>
   function saveSettings(form){
@@ -124,11 +152,13 @@
   var time = form.time.value;
   var temp = form.temp.value;
   var notif = form.notif.value;
+  var notifHrs = form.notifHrs.value;
   var email = form.email.value;
   localStorage.date = date;
   localStorage.time = time;
   localStorage.temp = temp;
   localStorage.notif = notif;
+  localStorage.notifHrs = notifHrs;
   localStorage.email = email;
   document.getElementById("save").innerHTML = '<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Settings Saved.</strong></div>';
   return false;
