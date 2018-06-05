@@ -20,9 +20,9 @@ def index():
 		sendemail(email,subject,msg)
 
 
-	readings = getReadings('/dev/ttyACM0')
+	readings = getReadings('/dev/cu.usbmodem621')
 	if readings == 'ERROR: SERIAL CONNECTION':
-		readings = getReadings('/dev/ttyACM0')
+		readings = getReadings('/dev/cu.usbmodem621')
 		if readings == 'ERROR: SERIAL CONNECTION':
 			readings = [-404, -1, -1, -1]
 
