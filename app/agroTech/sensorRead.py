@@ -13,12 +13,12 @@ def getReadings(serialPort):
     while sensors:
         try:
             readings = ser.readline()
-            if len(readings) > 24:
+            if len(readings) == 29:
                 sensors = False
                 temp = readings[2:7]
-                hum = readings[9:14]
-                ph = readings[16:20]
-                gndHum = readings[22:27]
+                hum = readings[9:15]
+                ph = readings[17:21]
+                gndHum = readings[23:29]
         except:
             pass
 
