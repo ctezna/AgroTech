@@ -9,6 +9,8 @@ from agroTech.static.data.db import get_db, init_db
 
 app.debug = True
 randTest = False
+rpi = True
+raspSerial = '/dev/ttyACM0'
 
 @app.route('/')
 @app.route('/index',methods=('GET','POST'))
@@ -19,12 +21,18 @@ def index():
 		msg = 'Please check the status of your SmartPots, we have received an alert that one of your plants requires attention.'
 		sendemail(email,subject,msg)
 
-
-	readings = getReadings('/dev/cu.usbmodem621')
-	if readings == 'ERROR: SERIAL CONNECTION':
-		readings = getReadings('/dev/cu.usbmodem621')
+	if rpi == False:
+	    readings = getReadings('/dev/cu.usbmodem411')
+	    if readings == 'ERROR: SERIAL CONNECTION':
+		    readings = getReadings('/dev/cu.usbmodem411')
+		    if readings == 'ERROR: SERIAL CONNECTION':
+			    readings = [-404, -1, -1, -1]
+	else:
+		readings = getReadings(raspSerial)
 		if readings == 'ERROR: SERIAL CONNECTION':
-			readings = [-404, -1, -1, -1]
+		    readings = getReadings(raspSerial)
+		    if readings == 'ERROR: SERIAL CONNECTION':
+			    readings = [-404, -1, -1, -1]
 
 	temperature = float(readings[0])
 	humidity = float(readings[1])
@@ -49,6 +57,7 @@ def index():
 		ph1 = random.uniform(6,7)
 		gndHum1 = random.uniform(1,100)
 		readings = [temperature, humidity, ph, gndHum, temperature1, humidity1, ph1, gndHum1]
+
 	return render_template("index.html", temp=temperature, hum=humidity, ph=ph, gndHum=gndHum)
 
 @app.route('/settings')

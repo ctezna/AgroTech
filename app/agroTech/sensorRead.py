@@ -9,30 +9,19 @@ def getReadings(serialPort):
         except:
             return('ERROR: SERIAL CONNECTION')
 
-    readings = ser.readline()
-    while len(readings) > 22:
-        readings = ser.readline()
-    temp = -404
-    hum = -1
-    ph = -1
-    gndHum = -1
-    for i in range(2,len(readings)+1):
-        if i == 7:
-            temp = readings[2:i]
-            temp = temp.decode("utf-8")
-        if i == 14:
-            hum = readings[9:i]
-            hum = hum.decode("utf-8")
-        if i == 20:
-            ph = readings[16:i]
-            ph = ph.decode("utf-8")
-        if i == 27:
-            gndHum = readings[22:i]
-            gndHum = gndHum.decode("utf-8")
+    sensors = True
+    while sensors:
+        try:
+            readings = ser.readline()
+            if len(readings) > 24:
+                sensors = False
+                temp = readings[2:7]
+                hum = readings[9:14]
+                ph = readings[16:20]
+                gndHum = readings[22:27]
+        except:
+            pass
 
-    if temp != -404 and hum != -1 and ph != -1 and gndHum != -1:
-        val = [temp,hum,ph,gndHum]
-        return val
-    else:
-        val = [-404,-1,-1,-1]
-        return val
+    ser.close()
+    val = [temp,hum,ph,gndHum]
+    return val
