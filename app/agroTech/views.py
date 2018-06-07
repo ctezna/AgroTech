@@ -84,6 +84,25 @@ def aboutUs():
 def newPot():
 	return render_template('newPot.html')
 
+@app.route('/plantCard')
+def plantCard():
+	name = request.args['name']
+	scname = request.args['scname']
+	tempL = request.args['tempL']
+	tempH = request.args['tempH']
+	humL = request.args['humL']
+	humH = request.args['humH']
+	phL = request.args['phL']
+	phH = request.args['phH']
+	comp = request.args['comp']
+	lc = request.args['lc']
+	img = request.args['img']
+	temp = request.args['temp']
+	hum = request.args['hum']
+	gndHum = request.args['gndHum']
+	ph = request.args['ph']
+	return render_template('plantCard.html',name=name,tempL=tempL,tempH=tempH,humL=humL,humH=humH,phL=phL,phH=phH,comp=comp,scname=scname,lc=lc,img=img,temp=temp,hum=hum,gndHum=gndHum,ph=ph)
+
 @app.route('/contact',methods=('GET','POST'))
 def contact():
 	if request.method == 'POST':

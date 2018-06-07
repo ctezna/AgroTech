@@ -269,8 +269,9 @@
           var date = dates[i];
           updatePot(plant,i+1,{{"{0:0.1f}".format(temp)}},{{"{0:0.1f}".format(hum)}},{{"{0:0.1f}".format(ph)}},localStorage.temp,date,{{"{0:0.1f}".format(gndHum)}});
         }
-        function addPot(id_pot,name,temp,rh,ph,lc,alertT,alertH,alertP,tempState,date,gndHum){
-          var s = '<td><a href="fruits" style="text-decoration: none; color: #000000;"><strong>'+ name + '</strong></a></td>';
+        function addPot(plantId,id_pot,name,temp,rh,ph,lc,alertT,alertH,alertP,tempState,date,gndHum,scname,tempL,tempH,humL,humH,phL,phH,comp,lc,img){
+          var href = '"plantCard?name='+name+'&scname='+scname+'&tempL='+tempL+'&tempH='+tempH+'&humL='+humL+'&humH='+humH+'&phL='+phL+'&phH='+phH+'&comp='+comp+'&lc='+lc+'&img='+img+'&temp='+temp+'&hum='+rh+'&gndHum='+gndHum+'&ph='+ph+'"';
+          var s = '<td><a href='+href+' style="text-decoration: none; color: #000000;"><strong>'+ name + '</strong></a></td>';
           var s1 = '';
           var faren = temp * 9/5.0 + 32;
           faren = Math.round(faren*10)/10;
@@ -355,6 +356,7 @@
               for(var i = 0; i < objs.length; i++){
                 if(plantId == objs[i].id){
                   name = objs[i].name;
+                  scname = objs[i].scientificName;
                   tempL = parseFloat(objs[i].tempL);
                   tempH = parseFloat(objs[i].tempH);
                   humL = parseFloat(objs[i].humL);
@@ -362,6 +364,8 @@
                   phL = parseFloat(objs[i].phL);
                   phH = parseFloat(objs[i].phH);
                   lc = parseFloat(objs[i].lifeCycle);
+                  comp = objs[i].comp;
+                  img = objs[i].img;
                 }
               }
             }
@@ -370,6 +374,7 @@
               for(var i = 0; i < objs.length; i++){
                 if(plantId == objs[i].id){
                   name = objs[i].name;
+                  scname = objs[i].scientificName;
                   tempL = parseFloat(objs[i].tempL);
                   tempH = parseFloat(objs[i].tempH);
                   humL = parseFloat(objs[i].humL);
@@ -377,6 +382,8 @@
                   phL = parseFloat(objs[i].phL);
                   phH = parseFloat(objs[i].phH);
                   lc = parseFloat(objs[i].lifeCycle);
+                  comp = objs[i].comp;
+                  img = objs[i].img;
                 }
               }
             }
@@ -385,6 +392,7 @@
               for(var i = 0; i < objs.length; i++){
                 if(plantId == objs[i].id){
                   name = objs[i].name;
+                  scname = objs[i].scientificName;
                   tempL = parseFloat(objs[i].tempL);
                   tempH = parseFloat(objs[i].tempH);
                   humL = parseFloat(objs[i].humL);
@@ -392,6 +400,8 @@
                   phL = parseFloat(objs[i].phL);
                   phH = parseFloat(objs[i].phH);
                   lc = parseFloat(objs[i].lifeCycle);
+                  comp = objs[i].comp;
+                  img = objs[i].img;
                 }
               }
             }
@@ -434,7 +444,7 @@
                 post('/index',{email: localStorage.email},'post');
               }
             }
-            addPot(potId,name,temp,hum,ph,lc,alertT,alertH,alertP,tempState,date,gndHum);
+            addPot(plantId,potId,name,temp,hum,ph,lc,alertT,alertH,alertP,tempState,date,gndHum,scname,tempL,tempH,humL,humH,phL,phH,comp,lc,img);
           }
         }
         </script>
